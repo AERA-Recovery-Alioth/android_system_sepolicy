@@ -729,6 +729,8 @@ se_policy_cil {
 
 se_policy_binary {
     name: "sepolicy.recovery",
+    // Only the shared recovery domain is permitted; infrastructure enforces.
+    permissive_domains_on_user_builds: ["recovery"],
     srcs: [":recovery_sepolicy.cil"],
     stem: "sepolicy",
     recovery: true,

@@ -29,5 +29,6 @@ allow hal_health_server self:capability2 wake_alarm;
 
 # Use bpf programs
 allow hal_health_server fs_bpf_vendor:dir search;
-allow hal_health_server fs_bpf_vendor:file read;
+# Vendor BPF objects cannot be accessed by system Health implementations.
+allow { hal_health_server -coredomain } fs_bpf_vendor:file read;
 allow hal_health_server bpfloader:bpf prog_run;
